@@ -20,7 +20,7 @@ Project Thoughts/Plans
 (Just wrote down whatever came to mind that seemed interesting)
 * Look into alternative build systems.
   * Currently CMake is an extremely good option, more features, faster?
-	* Also look into using scons, it also looks like a good alternative, uses python, not as many features, more exact.
+  * Also look into using scons, it also looks like a good alternative, uses python, not as many features, more exact.
 * SDL2 for windows initially.
 * use glm for math library.
 * OpenGL 3.3 based rendering
