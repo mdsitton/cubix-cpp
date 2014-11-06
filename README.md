@@ -9,8 +9,8 @@ To build you are going to need CMake. I've been thinking about trying scons, so 
 
 Dependancies
 -------------
-SDL2
-GLM
-CMake
-A C++ compiler :P
+* SDL2
+* GLM
+* CMake
+* A C++ compiler :P
   
