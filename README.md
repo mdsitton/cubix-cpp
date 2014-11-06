@@ -11,6 +11,7 @@ Dependancies
 ------------
 * SDL2
 * GLM
+* GLEW
 * CMake
 * A C++ compiler :P
 *
@@ -21,6 +22,10 @@ Project Thoughts/Plans
 * Look into alternative build systems.
   * Currently CMake is an extremely good option, more features, faster?
   * Also look into using scons, it also looks like a good alternative, uses python, not as many features, more exact.
+* I would also like to look into some lighter weight alteratives to GLEW in the future.
+  * Could fork and update gl3w.
+  * Work on that planned opengl binding for python, and also let it export stuff for C/C++
+  * GLXW looks pretty good supports :gl wgl glx gles2 egl khr.
 * SDL2 for windows initially.
 * use glm for math library.
 * OpenGL 3.3 based rendering
