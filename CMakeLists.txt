@@ -43,13 +43,19 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/src/core/config.hpp"
 )
 
-set( SOURCE ${PROJECT_SOURCE_DIR}/src/game/main.cpp )
-set( HEADERS ${PROJECT_SOURCE_DIR}/src/core/config.hpp )
+set(CORE_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp)
+set(CORE_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp)
+source_group("src\\core" FILES ${CORE_SOURCE} ${CORE_HEADERS})
+
+set(GAME_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/game/main.cpp)
+source_group("src\\game" FILES ${GAME_SOURCE})
+
+set( SOURCE ${CORE_HEADERS} ${CORE_SOURCE} ${GAME_SOURCE})
 
 include_directories(${PROJECT_SOURCE_DIR}/src/core)
 include_directories(${PROJECT_SOURCE_DIR}/src/engine)
 include_directories(${PROJECT_SOURCE_DIR}/src/game)
 
-add_executable(cubix ${SOURCE} ${HEADERS})
+add_executable(cubix ${SOURCE})
 
 target_link_libraries(cubix ${SDL2_LIBRARY})
