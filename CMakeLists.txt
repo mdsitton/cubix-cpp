@@ -35,6 +35,8 @@ endif()
 
 find_package(SDL2 REQUIRED)
 find_package(GLEW REQUIRED)
+include_directories(${SDL2_INCLUDE_DIR})
+include_directories(${GLEW_INCLUDE_DIRS})
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/core/config.hpp.in"
