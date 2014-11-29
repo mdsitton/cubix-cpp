@@ -35,8 +35,12 @@ endif()
 
 find_package(SDL2 REQUIRED)
 find_package(GLEW REQUIRED)
+find_package(Freetype REQUIRED)
+find_package(GLM REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(${FREETYPE_INCLUDE_DIRS})
+include_directories(${GLM_INCLUDE_DIRS})
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/src/core/config.hpp.in"
@@ -58,4 +62,4 @@ include_directories(${PROJECT_SOURCE_DIR}/src/game)
 
 add_executable(cubix ${SOURCE})
 
-target_link_libraries(cubix ${SDL2_LIBRARY})
+target_link_libraries(cubix ${SDL2_LIBRARY} ${FREETYPE_LIBRARIES} ${GLEW_LIBRARIES})
