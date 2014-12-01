@@ -33,6 +33,8 @@ namespace CubixCore
 
 		~Window();
 
+		SDL_Window* get_plaform_window(){return m_sdlWindow;}
+
 		void make_current(Context* context);
 		void flip();
 

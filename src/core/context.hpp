@@ -1,3 +1,5 @@
+#include "SDL.h"
+
 namespace CubixCore
 {
 	class Window;
@@ -16,6 +18,7 @@ namespace CubixCore
 
 	public:
 
-		SDL_Window* get_platform_window();
+		void set_window(window*){m_window = window;}
+		SDL_GLContext get_platform_context() {return m_context;}
 	};
 }
