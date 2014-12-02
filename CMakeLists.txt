@@ -47,8 +47,8 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/src/core/config.hpp"
 )
 
-set(CORE_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp)
-set(CORE_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp)
+set(CORE_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.hpp)
+set(CORE_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.cpp)
 source_group("src\\core" FILES ${CORE_SOURCE} ${CORE_HEADERS})
 
 set(GAME_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/game/main.cpp)

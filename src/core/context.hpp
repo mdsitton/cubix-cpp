@@ -1,9 +1,12 @@
+#pragma once
 #include "SDL.h"
+
+#include "window.hpp"
 
 namespace CubixCore
 {
 	class Window;
-
+	
 	class Context
 	{
 	private:
@@ -12,13 +15,15 @@ namespace CubixCore
 		int m_msaa;
 		int m_profile;
 
-		Window* m_window;
-		SDL_GLContext m_context;
+		Window* m_window = nullptr;
+		SDL_GLContext m_context = nullptr;
 
 
 	public:
 
-		void set_window(window*){m_window = window;}
+		Context(int major, int minor, int msaa);
+		~Context();
+		void set_window(Window* window);
 		SDL_GLContext get_platform_context() {return m_context;}
 	};
 }

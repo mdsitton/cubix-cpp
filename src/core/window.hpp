@@ -1,12 +1,13 @@
+#pragma once
 #include <string>
 
 #include "SDL.h"
+#include "context.hpp"
 
 namespace CubixCore
 {
-	const uint defaultWindowFlag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
-
 	class Context;
+	const uint defaultWindowFlag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
 
 	class Window
 	{
@@ -33,7 +34,7 @@ namespace CubixCore
 
 		~Window();
 
-		SDL_Window* get_plaform_window(){return m_sdlWindow;}
+		SDL_Window* get_platform_window() {return m_sdlWindow;}
 
 		void make_current(Context* context);
 		void flip();
