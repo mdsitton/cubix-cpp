@@ -31,12 +31,13 @@ Project Thoughts/Plans
 * OpenGL 3.3 based rendering
 * freetype2 based font rendering
   * Will need a texture atlas
+* Look into Harfbuzz?
 * For a UI system I really need to study up on various "Modern" UI systems.
-	* Reach into the horidness of JavaScript frameworks for insperation.
-	* look at Qt 5 as an example.
-	* WPF (Windows Presentation Foundation) API's my be good to study.
-	* I really need to iterate on this and figure out what works the best.
-	  *  Mainly cause i haven't before.
-		* To do this right, i need to have a well abstracted 2D rendering API so i can move quickly.
+    * Reach into the horidness of JavaScript frameworks for insperation.
+    * look at Qt 5 as an example.
+    * WPF (Windows Presentation Foundation) API's my be good to study.
+    * I really need to iterate on this and figure out what works the best.
+      *  Mainly cause i haven't before.
+        * To do this right, i need to have a well abstracted 2D rendering API so i can move quickly.
 * I have been reading through Game Programming Patterns, I would like to apply much of the content presented there to this project as well.
 
