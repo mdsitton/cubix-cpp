@@ -6,39 +6,39 @@
 
 namespace CubixCore
 {
-	class Context;
-	const uint defaultWindowFlag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
+    class Context;
+    const uint defaultWindowFlag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
 
-	class Window
-	{
-	private:
-		std::string m_title;
-		bool m_fullscreen;
+    class Window
+    {
+    private:
+        std::string m_title;
+        bool m_fullscreen;
 
-		int m_width;
-		int m_height;
-		int m_x;
-		int m_y;
+        int m_width;
+        int m_height;
+        int m_x;
+        int m_y;
 
-		Uint32 m_sdlFlags;
-		SDL_Window* m_sdlWindow;
+        Uint32 m_sdlFlags;
+        SDL_Window* m_sdlWindow;
 
-		Context* m_context;
+        Context* m_context;
 
-	public:
+    public:
 
-		Window(int width=800,
-				int height=600,
-		    	bool fullscreen=false,
-		    	std::string title="Game");
+        Window(int width=800,
+                int height=600,
+                bool fullscreen=false,
+                std::string title="Game");
 
-		~Window();
+        ~Window();
 
-		SDL_Window* get_platform_window() {return m_sdlWindow;}
+        SDL_Window* get_platform_window() {return m_sdlWindow;}
 
-		void make_current(Context* context);
-		void flip();
+        void make_current(Context* context);
+        void flip();
 
-	};
+    };
 
 }

@@ -16,19 +16,19 @@ set(PLATFORM_OSX 0)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
-	message(STATUS "Building for Windows.")
-	set(ENV{SDL2DIR} "${PROJECT_SOURCE_DIR}/extern/sdl2")
-	set(PLATFORM_WINDOWS 1)
+    message(STATUS "Building for Windows.")
+    set(ENV{SDL2DIR} "${PROJECT_SOURCE_DIR}/extern/sdl2")
+    set(PLATFORM_WINDOWS 1)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
-	message(STATUS "Building for Linux.")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-	set(PLATFORM_LINUX 1)
+    message(STATUS "Building for Linux.")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+    set(PLATFORM_LINUX 1)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-	message(STATUS "Building for Mac OS X.")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
-	set(PLATFORM_OSX 1)
+    message(STATUS "Building for Mac OS X.")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+    set(PLATFORM_OSX 1)
 
 endif()
 
