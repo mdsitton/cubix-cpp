@@ -3,10 +3,16 @@
 namespace CubixCore
 {
 
+    void init_video()
+    {
+        SDL_Init(0);
+        SDL_InitSubSystem(SDL_INIT_VIDEO);
+    }
+
     Window::Window(int width, int height, bool fullscreen, std::string title)
     : m_width(width), m_height(height), m_fullscreen(fullscreen), m_title(title)
     {
-        
+	// TODO - Implement fullscreen mode
         m_x = SDL_WINDOWPOS_CENTERED;
         m_y = SDL_WINDOWPOS_CENTERED;
 

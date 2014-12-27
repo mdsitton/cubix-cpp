@@ -9,6 +9,8 @@ namespace CubixCore
     class Context;
     const uint defaultWindowFlag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
 
+    void init_video();
+
     class Window
     {
     private:
