@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <GL/glew.h>
+
 #include "window.hpp"
 #include "context.hpp"
 #include "events.hpp"
@@ -29,6 +31,13 @@ int main()
     CubixCore::Events eve;
 
     win.make_current(&con);
+
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+        std::cout << "Error: %s\n", glewGetErrorString(err);
+    }
+
     CubixCore::Listener lis;
     lis.handler = handleEvent;
     lis.mask = CubixCore::EventType::Quit;
@@ -38,6 +47,10 @@ int main()
     while (running) {
         //std::cout << "cow";
         eve.process();
+        glClearColor(0.5, 0.5, 0.5, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         win.flip();
     }
 

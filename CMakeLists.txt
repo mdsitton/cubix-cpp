@@ -13,6 +13,7 @@ project(cubix)
 set(PLATFORM_WINDOWS 0)
 set(PLATFORM_LINUX 0)
 set(PLATFORM_OSX 0)
+set(ADDITIONAL_LIBS "")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
@@ -29,6 +30,7 @@ elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
     message(STATUS "Building for Mac OS X.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+    set(ADDITIONAL_LIBS "-framework OpenGL")
     set(PLATFORM_OSX 1)
 
 endif()
@@ -72,4 +74,4 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 
 add_executable(cubix ${SOURCE})
 
-target_link_libraries(cubix ${SDL2_LIBRARY} ${FREETYPE_LIBRARIES} ${GLEW_LIBRARIES})
+target_link_libraries(cubix ${SDL2_LIBRARY} ${FREETYPE_LIBRARIES} ${GLEW_LIBRARIES} ${ADDITIONAL_LIBS})
