@@ -1,3 +1,4 @@
+#pragma once
 // Platforms
 #define PLATFORM_WINDOWS ${PLATFORM_WINDOWS}
 #define PLATFORM_LINUX ${PLATFORM_LINUX}

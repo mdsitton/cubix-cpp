@@ -2,7 +2,16 @@
 
 #include "window.hpp"
 #include "context.hpp"
+#include "events.hpp"
 #include "config.hpp"
+
+bool running = true;
+
+bool handleEvent(CubixCore::Event event)
+{
+    running = false;
+    return true;
+}
 
 int main()
 {
@@ -14,10 +23,25 @@ int main()
     }else if (PLATFORM_OSX) {
 	std::cout << "Platform: OS X";
     }
+
     CubixCore::Window win;
     CubixCore::Context con(3, 3, 0);
+    CubixCore::Events eve;
 
     win.make_current(&con);
+    CubixCore::Listener lis;
+    lis.handler = handleEvent;
+    lis.mask = CubixCore::EventType::Quit;
+
+    eve.add_listener(lis);
+
+    while (running) {
+        //std::cout << "cow";
+        eve.process();
+        win.flip();
+    }
+
+
 
     win.make_current(nullptr);
     return 0;

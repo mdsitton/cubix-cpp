@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
+set(CMAKE_C_COMPILER /bin/gcc CACHE STRING "C compiler" FORCE)
+set(CMAKE_CXX_COMPILER /bin/g++ CACHE STRING "C++ compiler" FORCE)
 project(cubix)
 
 # Get git information from the .git folder
@@ -8,6 +10,7 @@ project(cubix)
 #set(GIT_FOLDER_PATH "")
 
 #set(CUBIX_VERSION "")
+
 
 set(PLATFORM_WINDOWS 0)
 set(PLATFORM_LINUX 0)
@@ -22,12 +25,12 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
     message(STATUS "Building for Linux.")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
     set(PLATFORM_LINUX 1)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
     message(STATUS "Building for Mac OS X.")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
     set(PLATFORM_OSX 1)
 
 endif()
@@ -47,8 +50,16 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/src/core/config.hpp"
 )
 
-set(CORE_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.hpp)
-set(CORE_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.cpp)
+set(CORE_HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/events.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/keycode.hpp)
+
+set(CORE_SOURCE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/events.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.cpp)
 source_group("src\\core" FILES ${CORE_SOURCE} ${CORE_HEADERS})
 
 set(GAME_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/game/main.cpp)
@@ -59,6 +70,7 @@ set( SOURCE ${CORE_HEADERS} ${CORE_SOURCE} ${GAME_SOURCE})
 include_directories(${PROJECT_SOURCE_DIR}/src/core)
 include_directories(${PROJECT_SOURCE_DIR}/src/engine)
 include_directories(${PROJECT_SOURCE_DIR}/src/game)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 add_executable(cubix ${SOURCE})
 
