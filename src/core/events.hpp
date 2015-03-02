@@ -12,12 +12,12 @@ namespace CubixCore
     enum class EventType
     {
         EventNone    = 0,
-        MouseMove    = 1 << 0,
-        WindowClose  = 1 << 1,
-        WindowSized  = 1 << 2,
-        KeyUp        = 1 << 3,
-        KeyDown      = 1 << 4,
-        Quit         = 1 << 5,
+        Quit         = 1 << 0,
+        MouseMove    = 1 << 1,
+        WindowClose  = 1 << 2,
+        WindowSized  = 1 << 3,
+        KeyUp        = 1 << 4,
+        KeyDown      = 1 << 5,
     };
 
     using underlying = std::underlying_type<EventType>::type;
@@ -44,13 +44,18 @@ namespace CubixCore
         float dy;
     };
 
-    struct WindowSizedEvent
+    struct WindowSizeEvent
     {
+
+        Uint32 id;
         int width;
         int height;
+    };
 
-        int x;
-        int y;
+
+    struct WindowCloseEvent
+    {
+        Uint32 id;
     };
 
     struct KeyUpEvent
@@ -76,7 +81,8 @@ namespace CubixCore
     union EventMan
     {
         MouseMoveEvent mouseMove;
-        WindowSizedEvent windowSized;
+        WindowSizeEvent windowSized;
+        WindowCloseEvent windowClose;
         KeyUpEvent keyUp;
         KeyDownEvent keyDown;
         QuitEvent quit;

@@ -9,9 +9,20 @@
 
 bool running = true;
 
-bool handleEvent(CubixCore::Event event)
+bool handleEvents(CubixCore::Event &event)
 {
-    running = false;
+    CubixCore::EventType type = event.type;
+    switch(type) {
+        case CubixCore::EventType::Quit:
+            running = false;
+            break;
+        case CubixCore::EventType::WindowSized:
+            std::cout << event.event.windowSized.width  << " "
+                      << event.event.windowSized.height << " "
+                      << event.event.windowSized.id     << std::endl;
+            break;
+
+    }
     return true;
 }
 
@@ -39,8 +50,8 @@ int main()
     }
 
     CubixCore::Listener lis;
-    lis.handler = handleEvent;
-    lis.mask = CubixCore::EventType::Quit;
+    lis.handler = handleEvents;
+    lis.mask = CubixCore::EventType::Quit | CubixCore::EventType::WindowSized;
 
     eve.add_listener(lis);
 

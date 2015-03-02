@@ -57,6 +57,23 @@ namespace CubixCore
                 m_event.event.quit = event;
 
                 eventProcessed = true;
+            } else if (sdlevent.type == SDL_WINDOWEVENT) {
+                const SDL_WindowEvent winEvent = sdlevent.window;
+                if (winEvent.event == SDL_WINDOWEVENT_CLOSE) {
+                    WindowCloseEvent event {winEvent.windowID};
+                    m_event.type = EventType::WindowClose;
+                    m_event.time = 0.0;                    // not used currently
+                    m_event.event.windowClose = event;
+                    eventProcessed = true;
+                }
+                else if (winEvent.event == SDL_WINDOWEVENT_RESIZED) {
+                    WindowSizeEvent event {winEvent.windowID, winEvent.data1, winEvent.data2};
+                    m_event.type = EventType::WindowSized;
+                    m_event.time = 0.0;                    // not used currently
+                    m_event.event.windowSized = event;
+                    eventProcessed = true;
+                }
+
             }
 
             if (eventProcessed == true) {
