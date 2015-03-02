@@ -1,6 +1,4 @@
 cmake_minimum_required(VERSION 3.0)
-set(CMAKE_C_COMPILER /bin/gcc CACHE STRING "C compiler" FORCE)
-set(CMAKE_CXX_COMPILER /bin/g++ CACHE STRING "C++ compiler" FORCE)
 project(cubix)
 
 # Get git information from the .git folder
@@ -30,7 +28,7 @@ elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
     message(STATUS "Building for Mac OS X.")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
     set(PLATFORM_OSX 1)
 
 endif()
