@@ -28,13 +28,13 @@ bool handleEvents(CubixCore::Event &event)
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    if (PLATFORM_WINDOWS) {
-	std::cout << "Platform: Windows";
-    }else if (PLATFORM_LINUX) {
-	std::cout << "Platform: Linux";
-    }else if (PLATFORM_OSX) {
-	std::cout << "Platform: OS X";
+    std::cout << "Game started!\n";
+    if (IF_WINDOWS) {
+	   std::cout << "Platform: Windows" << std::endl;
+    }else if (IF_LINUX) {
+	   std::cout << "Platform: Linux" << std::endl;
+    }else if (IF_OSX) {
+	   std::cout << "Platform: OS X" << std::endl;
     }
 
     CubixCore::Window win;

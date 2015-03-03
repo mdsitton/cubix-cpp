@@ -10,9 +10,11 @@ project(cubix)
 #set(CUBIX_VERSION "")
 
 
-set(PLATFORM_WINDOWS 0)
-set(PLATFORM_LINUX 0)
-set(PLATFORM_OSX 0)
+set(PL_WINDOWS 1)
+set(PL_LINUX 2)
+set(PL_OSX 3)
+
+set(PLATFORM 0)
 set(ADDITIONAL_LIBS "")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
@@ -20,18 +22,18 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
     message(STATUS "Building for Windows.")
     set(ENV{SDL2DIR} "${PROJECT_SOURCE_DIR}/extern/sdl2")
-    set(PLATFORM_WINDOWS 1)
+    set(PLATFORM PL_WINDOWS)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
     message(STATUS "Building for Linux.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -lGL")
-    set(PLATFORM_LINUX 1)
+    set(PLATFORM PL_LINUX)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
     message(STATUS "Building for Mac OS X.")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
     set(ADDITIONAL_LIBS "-framework OpenGL")
-    set(PLATFORM_OSX 1)
+    set(PLATFORM PL_OSX)
 
 endif()
 
@@ -46,20 +48,23 @@ include_directories(${FREETYPE_INCLUDE_DIRS})
 include_directories(${GLM_INCLUDE_DIRS})
 
 configure_file (
-  "${PROJECT_SOURCE_DIR}/src/core/config.hpp.in"
-  "${PROJECT_SOURCE_DIR}/src/core/config.hpp"
+  "${PROJECT_SOURCE_DIR}/src/config.hpp.in"
+  "${PROJECT_SOURCE_DIR}/src/config.hpp"
 )
 
 set(CORE_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/events.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/timing.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/keycode.hpp)
 
 set(CORE_SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/window.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/core/events.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/context.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/core/timing.cpp)
+
 source_group("src\\core" FILES ${CORE_SOURCE} ${CORE_HEADERS})
 
 set(GAME_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/src/game/main.cpp)

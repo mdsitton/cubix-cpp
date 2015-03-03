@@ -1,7 +1,0 @@
-#pragma once
-// Platforms
-#define PLATFORM_WINDOWS ${PLATFORM_WINDOWS}
-#define PLATFORM_LINUX ${PLATFORM_LINUX}
-#define PLATFORM_OSX ${PLATFORM_OSX}
-
-// will add version info here later on
